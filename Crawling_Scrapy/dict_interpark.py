@@ -1,10 +1,11 @@
 """
- 크롤링의 처리속도를 최대화 하기 위해 dict 형태로 필요정보를 받아온다.
+ 크롤링의 처리속도를 최대화 하기 위해, dict 형태로 필요정보를 받아온다.
 
  받아오는 페이지를 모두 dict에 입력한 후,
 
  BeautifulSoup 상에서 데이터를 가공한다.
 """
+
 from selenium import webdriver as wd 
 import time
 
@@ -31,6 +32,7 @@ Pages = driver.find_elements_by_css_selector('.panelZone > div.pageNumBox > ul >
 if Pages:
     print(" {} 여행지 페이지 받아옴!\n".format(keyword))
 
+
 '''
 여러 페이지의 html 소스를 dict로 받는다
 '''
@@ -48,9 +50,12 @@ for page in range(1, len(Pages)+1):
 print("{} 여행지 {} 페이지 불러옴\n".format(keyword, len(HTML_dict)))
 # print(HTML_dict[1])
 
+# 셀레니움 닫기
+driver.quit()
+
 
 '''
-BeautifulSoup에 dict 담기
+BeautifulSoup 처리
 '''
 from bs4 import BeautifulSoup
 
@@ -68,27 +73,28 @@ for n in range(1, len(HTML_dict)+1):
     # print("="*100)
 
     # 리스트에 여행지명, 가격 담기
-    for index in range(len(tour_names)):
-        tour_List.append([
-            tour_names[index].get_text(),
-            tour_prices[index].get_text().replace('~', '').replace('원', '')
-            ])
+    for i in range(len(tour_names)):
+        name = tour_names[i].get_text().strip()
+        price = tour_prices[i].get_text().replace('~', '').replace('원', '').replace(',', '').strip()
+        print("투어명:", name)
+        print("가격:", price)
+        print('='*80)
+        tour_List.append([name,price])
 
 # print(len(tour_List))
-# 셀레니움 닫기
-driver.quit()
 
+for tour in tour_List:
+    print(tour)
 
-# for tour in tour_List:
-#     print(tour)
-
-# csv 파일 
+# csv 파일 저장
 with open("tour_info.csv", "w") as file:
     file.write("여행상품,가격\n")
     for tour in tour_List:
         file.write("{},{}\n".format(tour[0],tour[1]))
+    print("저장 완료!")
 
 
+'''
 # 표로 그리기
 import pandas as pd 
 import matplotlib as mpl 
@@ -105,3 +111,4 @@ ax.set_xlabel("제품명", fontsize=8)
 ax.set_ylabel("가격", fontsize=8)
 ax.legend(['여행상품','가격'], fontsize=8)
 plt.show()
+'''
