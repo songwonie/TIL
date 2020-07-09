@@ -1,5 +1,6 @@
-#### Technical Blog Posting
+#### Technical Blog Posting :
 # Snagging Parking Spaces with Mask R-CNN and Python     
+### Using Deep Learning to Solve Minor Annoyances
 by. Adam Geitgey
 ___
 - Project pipeline
