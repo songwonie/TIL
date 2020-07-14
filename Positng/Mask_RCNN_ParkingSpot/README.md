@@ -4,7 +4,7 @@
 Posting: https://medium.com/@ageitgey/snagging-parking-spaces-with-mask-r-cnn-and-python-955f2231c400 
 by. Adam Geitgey
 ___
-- Project pipeline
+- Project architecture
 
 ![](https://miro.medium.com/max/1250/1*5_RhEVdNRA4_ZXJF9ZGL3w.png)
 
