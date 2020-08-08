@@ -100,7 +100,7 @@ ___
 
 
 
-	# release(배포) 브랜치와 hotfix(버그수정) 브랜치!!!
+	### release(배포) 브랜치와 hotfix(버그수정) 브랜치!!!
 
 	  위 절차들을 통해서 feature -> dev -> master로 이어지는 단계를 확인!
 
@@ -137,15 +137,13 @@ ___
 							지워준다! 
 
 
-
-	
-	배포한 버전에 긴급하게 수정을 해야할 경우 hotfix 브랜치를 만든다!
+		배포한 버전에 긴급하게 수정을 해야할 경우 hotfix 브랜치를 만든다!
 
 
-	1. $ git checkout -b hotfix-1.2.1 master	master에서 바로 분기한다!
+		1. $ git checkout -b hotfix-1.2.1 master	master에서 바로 분기한다!
 
 
-	2. $ git checkout master -> git merge --no-ff hotfix-1.2.1
+		2. $ git checkout master -> git merge --no-ff hotfix-1.2.1
 
 							필요한 부분을 수정한 후, master 상에서
 
@@ -153,16 +151,10 @@ ___
 
 
 
-	3. $ git tag -a 1.2.1				병합한 커밋에 버전 이름을 태그로 부여
+		3. $ git tag -a 1.2.1			병합한 커밋에 버전 이름을 태그로 부여
 
 
-	4. $ git checkout dev  ->  git merge --no-ff hotfix-1.2.1
-
-							dev 브랜치에도 수정사항을 반영!
-
-
-
-
+		4. $ git checkout dev  ->  git merge --no-ff hotfix-1.2.1 	dev 브랜치에도 수정사항을 반영!
 
 
 
